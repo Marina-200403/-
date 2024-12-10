@@ -26,7 +26,10 @@ def valid_value(message_input: str, message_err: str, template: list):
         print(message_err)
 
 def valid_comand(ch, flag):
-    return True
+    if flag >= ch:
+        return True
+    print ('ERROR')
+    return False
 
 def make_mat():
     size = int(input("Введите размер матрицы "))
@@ -41,7 +44,15 @@ def sum_mat(mat_1, mat_2, size):
     return (mat_rezult, det)
 
 def mat_input(size):
-    mat = [ [0]*size for i in range(size)] 
+    mat = [ [0]*size for i in range(size)]
+    print('Вводите не числа, если хотите сгенерировать')
+    for i in range(size):
+        for j in range(size):
+            s = input()
+            if is_int(s):
+                mat[i][j] = int(s)
+            else:
+                mat[i][j] = randint(-5,5) 
     return mat
 
 def mat_output(mat_1, mat_2, mat_rezult, det):
